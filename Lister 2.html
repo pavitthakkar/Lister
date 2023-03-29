@@ -1,0 +1,954 @@
+
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="C:\Users\pavit\Downloads\download-removebg-preview.png">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://kit.fontawesome.com/fe30898daf.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+
+
+
+<style>
+body, h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  min-width: 250px;
+  font-family: 'Comfortaa', cursive;
+
+}
+
+.head{
+}
+
+
+
+/* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+  background: #ddd;
+}
+
+/* When  double clicked on, add a background color and strike out text */
+ul li.checked {
+  background:  #2db300;
+  color: #fff;
+  text-decoration: line-through;
+    pointer-events: none;
+}
+
+
+/* When clicked on, add a background color and strike out text */
+ul li.priority {
+  background:  #ff9933;
+  color: #fff;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.reward {
+  background:  #ffff00;
+  color: #fff;
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+  text-align: left;
+
+}
+
+#title {
+
+font-size: 35px;
+
+
+}
+
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+  pointer-events: auto;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Style the header */
+.header {
+  background-color: #a6a6a6;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+/* Clear floats after the header */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the input */
+#newItemInput {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 30%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+  outline: 0px solid transparent;
+    font-family: 'Comfortaa', cursive;
+}
+
+#urgImp{
+ margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 15%;
+  height: 38.4px;
+  padding: 0px;
+  float: left;
+  font-size: 15px;
+  outline: 0px solid transparent;
+    font-family: 'Comfortaa', cursive;
+	background-color: white;
+	color: black;
+}
+
+
+
+
+/* Style the "Add" button */
+.addBtn {
+  padding: 10px;
+  width: 20%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+
+#newList{
+
+float: right;
+background-color: lightgrey;
+border-radius: 5px;
+margin: 15px;
+
+  font-family: 'Comfortaa', cursive;
+padding: 15px;
+}
+
+taskComplete{
+text-align: center;
+position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+
+footer{
+background-color: #a6a6a6;
+color:white;
+}
+
+#newTabOpen{
+border-radius: 7px;
+padding: 10px;
+font-size: 16px;
+background-color: lightgrey;
+float: right;
+  font-family: 'Comfortaa', cursive;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+#impo{
+float: left;
+padding: 10px;
+width: 15%;
+background: #d9d9d9;
+color: #555;
+float: left;
+text-align: center;
+font-size: 16px;
+cursor: pointer;
+transition: 0.3s;
+border-radius: 0;
+}
+
+.impo:hover {
+  background-color: #bbb;	
+}
+
+
+#dueDate{
+margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 15%;
+  padding: 10px;
+  float: left;
+  font-size: 14px;
+  outline: 0px solid transparent;
+    font-family: 'Comfortaa', cursive;
+}
+
+#whereTo{
+margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 20%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+  outline: 0px solid transparent;
+    font-family: 'Comfortaa', cursive;
+}
+
+
+#gold{
+
+text-align: right;
+    font-family: 'Comfortaa', cursive;
+	color: white;
+	position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+
+.sidenav {
+
+}
+
+.tabcontent{}
+.tablinks{
+border-radius: 4px;
+padding: 10px;
+font-size: 16px;
+background-color: lightgrey;
+border-style: none;
+ font-family: 'Comfortaa', cursive;
+ }
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  color: grey;
+  }
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: black ;
+  background-color: #a6a6a6;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+
+.important{
+
+background: ##ffcc00;
+color: black;
+}
+
+.urgent{
+
+background: #ff8000;
+color: #fff;
+}
+
+.urgAndImp{
+
+background: #ff1a1a;
+color: #fff;
+}
+
+.useBtn{
+border-radius: 7px;
+padding: 10px;
+font-size: 16px;
+background-color: lightgrey;
+border-style: none;
+ font-family: 'Comfortaa', cursive;
+}
+
+.cardStack {
+  display: gid;
+  grid-template-columns: auto auto auto;
+}
+
+quotes{
+align: center;
+font-family: 'Comfortaa', cursive;
+font-size: 15px;
+text-align: center;
+}
+
+.timer {
+  font-family: 'Comfortaa', cursive;
+  padding: 24px 32px;
+  border-radius: 30px;
+  background: white;
+
+}
+
+.timer__part {
+  font-size: 36px;
+}
+
+.timer__btn {
+  width: 50px;
+  height: 50px;
+  margin-left: 16px;
+  border-radius: 20%;
+  border: none;
+  color: white;
+  background: gray;
+  cursor: pointer;
+}
+
+.timer__btn--start {
+  background: #00b84c;
+}
+
+.timer__btn--stop {
+  background: #ff0256;
+}
+
+
+
+</style>
+<title>Lister</title>
+
+</head>
+<body onload="tutorial()">
+
+<div id="myDIV" class="header">
+  <span class="head"><p style="margin:5px" id="title" contenteditable="true">Lister</p></span><span class="head"><p id="gold" align="right"></p></span>
+  <br>
+<div id="sidenav">  
+  <button class="tablinks" onclick="openPage('Home')" id="defaultOpen">Home</button>
+<button class="tablinks" onclick="openPage('Rewards')">Rewards</button>
+<button class="tablinks" onclick="openPage('Analytics')">Analytics</button>
+<button class="tablinks" onclick="openPage('Motivation')">Motivation</button>
+
+
+</div>
+</div>
+<div id="Home" class="tabcontent">
+<div class="header">
+  <input type="text" id="newItemInput" placeholder="Add Item . . ." style="font-family:'Comfortaa', cursive;" list="listSuggestion"><input type="date" id="dueDate"><input type="text" placeholder="Location" id="whereTo"><div id="urgImp">
+  <br style="line-height: 10px"><input type="checkbox" id="urgent" value="Urgent">
+  <label for="urgent"> Urgent</label>
+  <input type="checkbox" id="important" value="Important">
+  <label for="important"> Important</label>
+</div>  
+  <span id="addBtn" onclick="newElement()" class="addBtn">Add</span>
+  <br>
+  <br>
+  </div>
+
+  
+
+  
+
+
+
+<datalist id="listSuggestion">
+<option>Go Shopping</option>
+<option>Meet Friends</option>
+<option>Call Relative</option>
+<option>Pizza Night</option>
+<option>Watch A Movie</option>
+<option>Read 1 Book</option>
+<option>Birthday Party</option>
+<option>Go To The Park</option>
+<option>Buy Office Supplies</option>
+<option>Return Package</option>
+<option>Clean/Organize House</option>
+</datalist>
+
+<br>
+
+<ul id="myUL">
+
+</ul>
+
+<br>
+<br>
+<br>
+<br><br>
+
+<button onclick="window.open('file:///C:/Users/pavit/OneDrive/Desktop/Lister1.html', '_blank');" id="newTabOpen" >+&nbsp;&nbsp;New list </button>
+<br>
+<br>
+<br>
+<button onclick="window.open('file:///C:/Users/pavit/OneDrive/Desktop/Lister%20tutorial.html', '_blank');" id="newTabOpen" >In-depth tutorial </button>
+<br>
+<br>
+<br>
+<button onclick="sortList()" id="newTabOpen" >Sort List Alphabetically</button>
+
+
+
+
+</div>
+
+<div id="Rewards" class="tabcontent">
+<br>
+<br>
+<br>
+<div class="cardStack">
+<div class="card" align="left">
+<br>
+  <h2>Eat a treat</h2>
+  <p class="price">5 Gold</p>
+  <button onclick="buy('buy5g1');checkGold();">Buy</button>
+</div>
+<div class="card" align="center">
+<br>
+  <h2>Watch a movie</h2>
+  <p class="price">5 Gold</p>
+  <button onclick="buy('buy5g2');checkGold();">Buy</button>
+</div>
+<div class="card" align="right">
+<br>
+  <h2>Hang out with friends</h2>
+  <p class="price">5 Gold</p>
+  <button onclick="buy('buy5g3');checkGold();">Buy</button>
+</div>
+<div class="card" align="left">
+<br>
+  <h2>Go on a $20 budgeted shopping spree</h2>
+  <p class="price">10 Gold</p>
+  <button onclick="buy('buy10g');checkGold();">Buy</button>
+</div>
+<div class="card" align="right">
+<br>
+  <h2>Custom Reward</h2>
+  <p class="price">15 Gold</p>
+  <button onclick="buy('buy15g');checkGold();">Buy</button>
+</div>
+</div>
+ 
+</div>
+
+<div id="Analytics" class="tabcontent">
+<br>
+<br>
+<br>
+<h3 id="taskComplete" style="text-align: center"></h3>
+<br>
+<h3 id="dailyTask" style="text-align: center"></h3>
+</div>
+
+<div id="Motivation" class="tabcontent">
+<br>
+<br>
+<h3 style="text-align: center">Quotes</h3>
+<br>
+<p class="quotes" style="text-align: center">“The best way out is always through.” - Robert Frost</p>
+<br>
+<p class="quotes" style="text-align: center">“I do not try to dance better than anyone else. I only try to dance better than myself.” - Arianna Huffington</p>
+<br>
+<p class="quotes" style="text-align: center">“Life is like riding a bicycle. To keep your balance you must keep moving.” - Albert Einstein</p>
+<br>
+<p class="quotes" style="text-align: center">“If you can't yet do great things, do small things in a great way.” - Napoleon Hill</p>
+<br>
+<p class="quotes" style="text-align: center">“Live out of your imagination, not your history.” - Stephen Covey</p>
+<br>
+<p class="quotes" style="text-align: center">“The secret of getting ahead is getting started” - Mark Twain</p>
+<br>
+<p class="quotes" style="text-align: center">“The only impossible journey is the one you never begin” - Tony Robbins</p>
+<br>
+<p class="quotes" style="text-align: center">"You define your own life. Don't let other people write your script." - Oprah Winfrey</p>
+<br>
+<p class="quotes" style="text-align: center">"It is during our darkest moments that we must focus to see the light." - Aristotle</p>
+<br>
+<p class="quotes" style="text-align: center">“Life is 10% what happens to you and 90% how you react to it" - Charles R. Swindoll</p>
+<br>
+<br>
+<br>
+<br>
+<h3 style="text-align: center">Break Timer<h3>
+<br>
+<br>
+<div class="timer" align="center" style="text-align: center"></div>
+</div>
+
+<div id="Analytics" class="tabcontent">
+<br>
+<br>
+<br>
+<h3 id="taskComplete" style="text-align: center"></h3>
+<br>
+<h3 id="dailyTask" style="text-align: center"></h3>
+</div>
+
+
+<audio id="audio">
+  <source src="C:\Users\pavit\Downloads\mixkit-signal-alert-771.wav" type="audio/wav">
+</audio>
+
+<script> 
+var matrix = "";
+const x=0
+var taskCheck = 0;
+var dailyGoal = 2;
+var gold = 0;
+var priorities = 0;
+document.getElementById("gold").innerHTML = "You have " + gold + " gold";
+
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('dblclick', function(ev) {
+  if (ev.target.tagName === 'LI') {
+  ev.target.classList.remove('priority');
+  ev.target.classList.remove('reward');
+  ev.target.classList.add('checked');
+  
+  taskCheck = taskCheck+1;
+  dailyGoal = dailyGoal-1
+  gold = gold+1;
+  document.getElementById("gold").innerHTML = "You have " + gold + " gold";
+  document.getElementById("dailyTask").innerHTML = "You need to do " + dailyGoal + " more task(s) to complete the daily goal.";
+  document.getElementById("taskComplete").innerHTML = "You have completed " + taskCheck + " tasks all time.";
+  
+  }
+ }, false);
+
+//remove a symbol when clicking on a list item"
+var list = document.querySelector('ul');
+list.addEventListener('contextmenu', function(ev) {
+  if (ev.target.tagName === 'LI') {
+  ev.target.classList.remove('priority');
+  ev.target.classList.remove('reward');
+  ev.target.classList.remove('checked');
+  }
+}, false);
+
+
+
+/* Add a "priority" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+  ev.target.classList.remove('checked');
+  ev.target.classList.remove('reward');
+    ev.target.classList.toggle('priority');
+  }
+}, false);*/
+
+var list = document.querySelector('ul');
+list.addEventListener("contextmenu", (e) => {e.preventDefault()});
+
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("newItemInput").value;
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  inputValue = inputValue + '\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0' ;
+  var completeDate = document.getElementById("dueDate").value;
+  var where = document.getElementById("whereTo").value;
+  if (completeDate === 'mm/dd/yyyy') {
+    completeDate = " ";
+  } else {
+  
+    
+  }
+ if (document.getElementById('important').checked && document.getElementById('urgent').checked) {
+            matrix = "Urgent & Important";
+        } else {
+        if (document.getElementById('urgent').checked) {
+            matrix = "Urgent";
+        } 
+		if (document.getElementById('important').checked) {
+            matrix = "Important";
+
+        } 
+		if (!document.getElementById('important').checked && !document.getElementById('urgent').checked) {
+            matrix = "";
+        }
+}		
+  
+  matrix2 = "Priority:  " + matrix;
+  var dueDate = "Complete by: " + completeDate + '\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0';
+  var location = "Location: " + where + '\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0';
+  var t = document.createTextNode(inputValue);
+  var dt = document.createTextNode(dueDate);
+  var l = document.createTextNode(location);
+  var m = document.createTextNode(matrix2);
+  var iconImp = '<i class="fa-solid fa-triangle-exclamation" style="color: #cccc00;"></i>&nbsp;&nbsp;&nbsp;';
+  var iconUrg = '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9933;"></i>&nbsp;&nbsp;&nbsp;';
+  var iconUrgImp = '<i class="fa-solid fa-triangle-exclamation fa-shake" style="color: #ff0000;"></i>&nbsp;&nbsp;&nbsp;';
+  
+  if (matrix === "Urgent & Important"){
+  li.innerHTML = iconUrgImp +inputValue + dueDate + location + matrix2;
+  }
+  else {
+  if (matrix === "Urgent"){
+  li.innerHTML = iconUrg +inputValue + dueDate + location + matrix2;
+  }
+  if (matrix === "Important"){
+  li.innerHTML = iconImp +inputValue + dueDate + location + matrix2;
+  }
+  if (matrix === ""){
+  li.innerHTML = inputValue + dueDate + location + matrix2;
+  }
+  }
+  
+  
+  document.getElementById("newItemInput").value = "";
+  document.getElementById("dueDate").value = "mm/dd/yyyy";
+  document.getElementById("whereTo").value = "";
+  matrix = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+
+function buy(buyItem){
+
+switch (buyItem){
+	case 'buy5g1':
+	prompt("Nice choice, what treat are you eating?", "");
+	window.alert("Interesting, I'm hungry now!")
+	gold = gold-5;
+	document.getElementById("gold").innerHTML = "You have " + gold + " gold";
+	break;
+	
+	case 'buy5g2':
+	window.alert("Have a great time");
+	gold = gold-5;
+	document.getElementById("gold").innerHTML = "You have " + gold + " gold";
+	break;
+	
+	case 'buy5g3':
+	window.alert("Have a great time");
+	gold = gold-5;
+	document.getElementById("gold").innerHTML = "You have " + gold + " gold";
+	break;
+	
+	case 'buy10g':
+	window.alert("Have a great time");
+	gold = gold-10;
+	document.getElementById("gold").innerHTML = "You have " + gold + " gold";
+	break;
+	
+	case 'buy15g':
+	prompt("I can not blame you, what do you want to do?", "");
+	window.alert("Fine decision, have fun!")
+	gold = gold-15;
+	document.getElementById("gold").innerHTML = "You have " + gold + " gold";
+	break;
+	
+	default:
+	alert("buying nothing");
+}
+}
+
+
+function openPage(pageName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+ var inputValue = document.getElementById("newItemInput");
+ inputValue.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("addBtn").click();
+    }
+});
+
+function sortList() {
+  var list, i, switching, b, shouldSwitch;
+  list = document.getElementById("myUL");
+  switching = true;
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // start by saying: no switching is done:
+    switching = false;
+    b = list.getElementsByTagName("LI");
+    // Loop through all list-items:
+    for (i = 0; i < (b.length - 1); i++) {
+      // start by saying there should be no switching:
+      shouldSwitch = false;
+      /* check if the next item should
+      switch place with the current item: */
+      if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+        /* if next item is alphabetically
+        lower than current item, mark as a switch
+        and break the loop: */
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark the switch as done: */
+      b[i].parentNode.insertBefore(b[i + 1], b[i]);
+      switching = true;
+    }
+  }
+}
+
+function checkGold(){
+
+while(gold < 0) {
+window.alert("You have overdrawn your Lister Gold. Please make up for it " + "You have " + gold + " gold")
+break;
+}
+}
+
+
+const hour = new Date().getHours(); 
+
+if (hour === 19) {
+  dailyGoal = 2; 
+
+}
+
+
+if (dailyGoal < 0) {
+  dailyGoal = 0; 
+
+} 
+
+function tutorial(){
+window.alert("Hi, welcome to Lister. Click on the heading to change the title. Press new list to duplicate the list. Finally, type in the bar to add an item. Click in depth tutorial for more tips. Hope You like using it! ");
+document.getElementById("taskComplete").innerHTML = "You have completed " + taskCheck + " tasks all time.";
+document.getElementById("dailyTask").innerHTML = "You need to do " + dailyGoal + " more task(s) to complete the daily goal.";
+}
+
+
+class Timer {
+  constructor(root) {
+    root.innerHTML = Timer.getHTML();
+
+    this.el = {
+      minutes: root.querySelector(".timer__part--minutes"),
+      seconds: root.querySelector(".timer__part--seconds"),
+      control: root.querySelector(".timer__btn--control"),
+      reset: root.querySelector(".timer__btn--reset")
+    };
+
+    this.interval = null;
+    this.remainingSeconds = 0;
+
+    this.el.control.addEventListener("click", () => {
+      if (this.interval === null) {
+        this.start();
+      } else {
+        this.stop();
+      }
+    });
+
+    this.el.reset.addEventListener("click", () => {
+      const inputMinutes = prompt("Enter number of minutes:");
+
+      if (inputMinutes < 60) {
+        this.stop();
+        this.remainingSeconds = inputMinutes * 60;
+        this.updateInterfaceTime();
+      }
+
+    });
+  }
+
+  updateInterfaceTime() {
+    const minutes = Math.floor(this.remainingSeconds / 60);
+    const seconds = this.remainingSeconds % 60;
+
+    this.el.minutes.textContent = minutes.toString().padStart(2, "0");
+    this.el.seconds.textContent = seconds.toString().padStart(2, "0");
+  }
+
+  updateInterfaceControls() {
+    if (this.interval === null) {
+      this.el.control.innerHTML = `<span class="material-icons">play_arrow</span>`;
+      this.el.control.classList.add("timer__btn--start");
+      this.el.control.classList.remove("timer__btn--stop");
+    } else {
+      this.el.control.innerHTML = `<span class="material-icons">pause</span>`;
+      this.el.control.classList.add("timer__btn--stop");
+      this.el.control.classList.remove("timer__btn--start");
+    }
+  }
+
+  start() {
+    if (this.remainingSeconds === 0) return;
+
+    this.interval = setInterval(() => {
+      this.remainingSeconds--;
+      this.updateInterfaceTime();
+
+      if (this.remainingSeconds === 0) {
+        this.stop();
+        audio.play(); 
+      }
+    }, 1000);
+
+    this.updateInterfaceControls();
+  }
+
+  stop() {
+    clearInterval(this.interval);
+
+    this.interval = null;
+
+    this.updateInterfaceControls();
+  }
+
+  static getHTML() {
+    return `
+			<span class="timer__part timer__part--minutes" style="text-align: center" align="center">00</span>
+			<span class="timer__part" style="text-align: center" align="center">:</span>
+			<span class="timer__part timer__part--seconds" style="text-align: center" align="center">00</span>
+			<button type="button" class="timer__btn timer__btn--control timer__btn--start" style="text-align: center" align="center">
+				<span class="material-icons" style="text-align: center" align="center">play_arrow</span>
+			</button>
+			<button type="button" class="timer__btn timer__btn--reset" style="text-align: center" align="center">
+				<span class="material-icons" style="text-align: center" align="center">timer</span>
+			</button>
+		`;
+  }
+}
+
+new Timer(
+	document.querySelector(".timer")
+);
+
+</script>
+
+
+</body>
+</html>
+
+
